@@ -99,7 +99,6 @@ class Hunter(models.Model):
     birthday = models.DateField()
     city = models.CharField(max_length=100)
     thumbnailPath = models.ImageField(blank=True, null=True)
-    skills =  models.CharField(max_length=200)
     job_area =models.ForeignKey(JobArea,on_delete=models.CASCADE,related_name='hunters')
     about = models.CharField(max_length=200)
     github_link = models.CharField(max_length=200, blank=True, null=True)    # TODO change to  Map Field like {'github': "http://...", 'Linkedin':"http://..." }
