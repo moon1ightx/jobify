@@ -80,8 +80,8 @@ class Vacancy(models.Model):
 class Internship(models.Model):
     title = models.CharField(max_length=200)
     start_date = models.DateField(blank=True, null=True)
-    company = models.ForeignKey(Company,on_delete=models.CASCADE,related_name='interships')
-    job_area =models.ForeignKey(JobArea,on_delete=models.CASCADE,related_name='interships')
+    company = models.ForeignKey(Company,on_delete=models.CASCADE,related_name='intenrships')
+    job_area =models.ForeignKey(JobArea,on_delete=models.CASCADE,related_name='intenrships')
     description = models.TextField()
     salary = models.IntegerField(blank=True, null=True)
     duration = models.IntegerField(blank=True, null=True)
