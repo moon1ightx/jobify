@@ -57,6 +57,8 @@ class StoryViews(APIView):
         serializer = self.serializer_class(stories, many=True)
         return Response(serializer.data)
 
+
+
 class HachathonViews(APIView):
     serializer_class = HackatonSerializer
     def get(self, request, format=None):
@@ -169,3 +171,25 @@ class HunterViews(APIView):
         else:
             return Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
+class RoadmapViews(APIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = RoadmapSerializer
+    def get(self, request, format=None):
+        roadmap = Roadmap.objects.filter(user=request.user).prefetch_related('plan')
+        serializer = self.serializer_class(roadmap, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            roadmap = Roadmap(
+            title=serializer.validated_data.get("title"),
+            user=request.user)
+            roadmap.save()
+            plan = PlanItem.objects.filter(pk__in=request.POST.getlist("plan"))
+            for t in plan:
+                 roadmap.plan.add(t)
+            response_serializer = self.serializer_class(roadmap)
+            return Response(response_serializer.data)
+        else:
+            return Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
