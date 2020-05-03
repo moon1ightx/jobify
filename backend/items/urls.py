@@ -5,4 +5,6 @@ urlpatterns = [
     path('companies', views.CompanyViews.as_view()),
     path('internships', views.IntershipViews.as_view()),
     path('vacancies', views.VacancyViews.as_view()),
+    path('stories', views.StoryViews.as_view()),
+    path('hackathons', views.HachathonViews.as_view()),
 ]

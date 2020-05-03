@@ -47,3 +47,22 @@ class IntershipViews(APIView):
         serializer = self.serializer_class(internships, many=True)
         return Response(serializer.data)
 
+class StoryViews(APIView):
+    serializer_class = StorySerializer
+    def get(self, request, format=None):
+        stories = Story.objects.all()
+        title_contains_query = request.GET.get('title')
+        if title_contains_query!='' and title_contains_query is not None:
+            stories=stories.filter(title__icontains=title_contains_query)
+        serializer = self.serializer_class(stories, many=True)
+        return Response(serializer.data)
+
+class HachathonViews(APIView):
+    serializer_class = HackatonSerializer
+    def get(self, request, format=None):
+        hacks = Hackathon.objects.all()
+        title_contains_query = request.GET.get('title')
+        if title_contains_query!='' and title_contains_query is not None:
+            hacks=hacks.filter(title__icontains=title_contains_query)
+        serializer = self.serializer_class(hacks, many=True)
+        return Response(serializer.data)
