@@ -9,7 +9,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db.models import Q
 from rest_framework.permissions import IsAdminUser, AllowAny, SAFE_METHODS, IsAuthenticated, IsAuthenticatedOrReadOnly
-
+from django.core.mail import EmailMessage
+import pdfkit
 class TechViews(APIView):
     serializer_class = TechSerializer
     def get(self, request, format=None):
@@ -193,3 +194,18 @@ class RoadmapViews(APIView):
             return Response(response_serializer.data)
         else:
             return Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+class CvViews(APIView):
+    serializer_class = HunterSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, format=None):
+        hunter = Hunter.objects.filter(user=request.user)
+        hunter1 = list(hunter)
+        hunter2= hunter1[0]
+        myPdf = pdfkit.from_string('<h1>'+request.user.first_name+' '+request.user.last_name+'</h1><br /><p>About me: '+hunter2.about+'</p><p>Hunter city: '+hunter2.city+'</p><h5>Birthday: '+str(hunter2.birthday)+'</h5>', 'cv.pdf')
+        serializer = self.serializer_class(hunter, many=True)
+        msg = EmailMessage('Jobify', request.user.first_name + ', Привет!', 'ainur.is1701@gmail.com', [request.user.email])
+        msg.content_subtype = "html"  
+        msg.attach_file("cv.pdf")
+        msg.send()
+        return Response(serializer.data)

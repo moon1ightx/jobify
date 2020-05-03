@@ -15,4 +15,5 @@ urlpatterns = [
     path('user_info', views.HunterViews.as_view()),
     path('tests/<int:pk>', views.TestViews.as_view()),
     path('roadmap', views.RoadmapViews.as_view()),
+    path('cv', views.CvViews.as_view()),
 ]
