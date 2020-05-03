@@ -111,15 +111,15 @@ class Internship(models.Model):
         )
 
 class Hunter(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, default=1)
     phone = models.CharField(max_length=20,blank=True, null=True)
-    birthday = models.DateField() #blank=True, null=True
-    city = models.CharField(max_length=100) #blank=True, null=True
+    birthday = models.DateField(blank=True, null=True) 
+    city = models.CharField(max_length=100, blank=True, null=True) 
     univer = models.ForeignKey(University,on_delete=models.CASCADE, blank=True, null=True,related_name='hunters')
     degree = models.ForeignKey(Degree,on_delete=models.CASCADE, blank=True, null=True,related_name='hunters')
     thumbnailPath  = models.ImageField(upload_to=upload_user_photo, blank=True, null=True)
     job_area =models.ForeignKey(JobArea,on_delete=models.CASCADE,related_name='hunters')
-    about = models.CharField(max_length=200) #blank=True, null=True
+    about = models.CharField(max_length=200, blank=True, null=True) 
     github_link = models.CharField(max_length=200, blank=True, null=True)    # TODO change to  Map Field like {'github': "http://...", 'Linkedin':"http://..." }
     linkedin_link = models.CharField(max_length=200,  blank=True, null=True)
     instagram_link = models.CharField(max_length=200,  blank=True, null=True)

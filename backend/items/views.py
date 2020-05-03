@@ -134,7 +134,8 @@ class HunterViews(APIView):
 
     def get(self, request, format=None):
         hunter = Hunter.objects.filter(user=request.user) 
-        serializer = HunterSerializer(hunter, many=True)
+        print(hunter)
+        serializer = self.serializer_class(hunter, many=True)
         return Response(serializer.data)
 
     def put(self, request, format=None):

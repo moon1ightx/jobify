@@ -69,7 +69,7 @@ class HunterSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True) 
     class Meta: 
         model = Hunter
-        fields = ('id','user', 'about', 'techno', 'phone','birthday','city','linkedin_link',"github_link", 'instagram_link','account_created_on','thumbnailPath','degree', 'job_area','univer' )
+        fields = ('user', 'about', 'techno', 'phone','birthday','city','linkedin_link',"github_link", 'instagram_link','account_created_on','thumbnailPath','degree', 'job_area','univer' )
 
 class PlanSerializer(serializers.ModelSerializer):
     techno = TechSerializer(read_only=True, many=True) 
