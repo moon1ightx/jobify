@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .models import Hunter, JobArea, Company, Vacancy, Internship, Stack, Roadmap, PlanItem, Story, Hackathon, Techno , University, Degree
+from .models import Hunter, JobArea, Company, Vacancy, Internship, Stack, Roadmap, PlanItem, Story, Hackathon, Techno , University, Degree, Test, Quiz
 from .serializers import JobAreaSerializer, CompanySerializer, VacancySerializer, IntershipSerializer
 from .serializers import StackSerializer, RoadmapSerializer, PlanSerializer, StorySerializer
-from .serializers import HackatonSerializer, TechSerializer, UniSerializer, DegreeSerializer, HunterSerializer
+from .serializers import HackatonSerializer, TechSerializer, UniSerializer, DegreeSerializer, HunterSerializer, TestSerializer, QuizSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -102,6 +102,12 @@ class JobAreaViews(APIView):
         serializer = self.serializer_class(job_area, many=True)
         return Response(serializer.data)
 
+class TestViews(APIView):
+    serializer_class = TestSerializer
+    def get(self, request,pk, format=None):
+        test = Test.objects.filter(stack=Stack.objects.get(pk=pk)).prefetch_related('quiz')
+        serializer = self.serializer_class(test, many=True)
+        return Response(serializer.data)
 
 class HunterViews(APIView):
     serializer_class = HunterSerializer

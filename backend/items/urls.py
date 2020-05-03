@@ -13,4 +13,5 @@ urlpatterns = [
     path('plans', views.PlanViews.as_view()),
     path('job_areas', views.JobAreaViews.as_view()),
     path('user_info', views.HunterViews.as_view()),
+    path('tests/<int:pk>', views.TestViews.as_view()),
 ]

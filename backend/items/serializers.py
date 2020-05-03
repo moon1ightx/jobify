@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Hunter, JobArea, Company, Vacancy, Internship, Stack, Roadmap, PlanItem, Story, Hackathon, Techno , University, Degree
+from .models import Hunter, JobArea, Company, Vacancy, Internship,Quiz,Test,Stack, Roadmap, PlanItem, Story, Hackathon, Techno , University, Degree
 from myauth.serializers import UserSerializer
 
 class JobAreaSerializer(serializers.ModelSerializer):
@@ -84,3 +84,17 @@ class RoadmapSerializer(serializers.ModelSerializer):
     class Meta:
         model = Roadmap
         fields = ('id', 'title', 'user', 'created_on','plan' )
+
+
+class QuizSerializer(serializers.ModelSerializer):
+    plan = PlanSerializer(read_only=True, many=True)
+    class Meta:
+        model = Quiz
+        fields = ('id', 'plan', 'quesiton', 'created_on','answer' , "var1", "var2")
+
+class TestSerializer(serializers.ModelSerializer):
+    quiz = QuizSerializer(read_only=True, many=True)
+    stack = StackSerializer(read_only=True)
+    class Meta:
+        model = Test
+        fields = ('id', 'quiz', 'title', 'created_on','stack')

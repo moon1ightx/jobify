@@ -154,3 +154,25 @@ class Roadmap(models.Model):
             ", ".join(t.title for t in self.plan.all()),
         )
 
+class Quiz(models.Model):
+    quesiton = models.CharField(max_length=200)
+    answer = models.CharField(max_length=100)
+    var1 = models.CharField(max_length=100)
+    var2 = models.CharField(max_length=100)
+    plan = models.ManyToManyField(PlanItem)
+    created_on = models.DateField(auto_now_add=True, blank=True, null=True)
+    def __str__(self):
+        return "%s (%s)" % (
+            self.quesiton,
+            ", ".join(t.title for t in self.plan.all()),
+        )
+class Test(models.Model):
+    stack = models.ForeignKey(Stack, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    quiz = models.ManyToManyField(Quiz)
+    created_on = models.DateField(auto_now_add=True, blank=True, null=True)
+    def __str__(self):
+        return "%s (%s)" % (
+            self.title,
+            ", ".join(t.quesiton for t in self.quiz.all()),
+        )
