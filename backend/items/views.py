@@ -60,9 +60,44 @@ class StoryViews(APIView):
 class HachathonViews(APIView):
     serializer_class = HackatonSerializer
     def get(self, request, format=None):
-        hacks = Hackathon.objects.all()
+        hacks = Hackathon.objects.all().prefetch_related('job_area')
         title_contains_query = request.GET.get('title')
         if title_contains_query!='' and title_contains_query is not None:
-            hacks=hacks.filter(title__icontains=title_contains_query)
+            hacks=hacks.filter(title__icontains=title_contains_query).prefetch_related('job_area')
         serializer = self.serializer_class(hacks, many=True)
+        return Response(serializer.data)
+
+class UniverViews(APIView):
+    serializer_class = UniSerializer
+    def get(self, request, format=None):
+        univers = University.objects.all()
+        serializer = self.serializer_class(univers, many=True)
+        return Response(serializer.data)
+
+class DegreeViews(APIView):
+    serializer_class = DegreeSerializer
+    def get(self, request, format=None):
+        degree = Degree.objects.all()
+        serializer = self.serializer_class(degree, many=True)
+        return Response(serializer.data)
+
+class PlanViews(APIView):
+    serializer_class = PlanSerializer
+    def get(self, request, format=None):
+        plans = PlanItem.objects.all().prefetch_related('techno')
+        serializer = self.serializer_class(plans, many=True)
+        return Response(serializer.data)
+
+class StackViews(APIView):
+    serializer_class = StackSerializer
+    def get(self, request, format=None):
+        stacks = Stack.objects.all().prefetch_related('techno')
+        serializer = self.serializer_class(stacks, many=True)
+        return Response(serializer.data)
+
+class JobAreaViews(APIView):
+    serializer_class = JobAreaSerializer
+    def get(self, request, format=None):
+        job_area = JobArea.objects.all()
+        serializer = self.serializer_class(job_area, many=True)
         return Response(serializer.data)

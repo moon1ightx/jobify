@@ -7,4 +7,9 @@ urlpatterns = [
     path('vacancies', views.VacancyViews.as_view()),
     path('stories', views.StoryViews.as_view()),
     path('hackathons', views.HachathonViews.as_view()),
+    path('universities', views.UniverViews.as_view()),
+    path('stacks', views.StackViews.as_view()),
+    path('degrees', views.DegreeViews.as_view()),
+    path('plans', views.PlanViews.as_view()),
+    path('job_areas', views.JobAreaViews.as_view()),
 ]
