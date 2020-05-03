@@ -1,6 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+def upload_user_photo(instance, filename):
+    lastDot = filename.rfind('.')
+    extension= filename[lastDot:len(filename):1]
+    return 'images/users/%s-%s%s' % (instance.github_link, time.time(), extension)
+
 class JobArea(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
@@ -112,7 +117,7 @@ class Hunter(models.Model):
     city = models.CharField(max_length=100)
     univer = models.ForeignKey(University,on_delete=models.CASCADE, blank=True, null=True,related_name='hunters')
     degree = models.ForeignKey(Degree,on_delete=models.CASCADE, blank=True, null=True,related_name='hunters')
-    thumbnailPath = models.ImageField(blank=True, null=True)
+    thumbnailPath  = models.ImageField(upload_to=upload_user_photo, blank=True, null=True)
     job_area =models.ForeignKey(JobArea,on_delete=models.CASCADE,related_name='hunters')
     about = models.CharField(max_length=200)
     github_link = models.CharField(max_length=200, blank=True, null=True)    # TODO change to  Map Field like {'github': "http://...", 'Linkedin':"http://..." }
