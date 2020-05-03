@@ -12,4 +12,5 @@ urlpatterns = [
     path('degrees', views.DegreeViews.as_view()),
     path('plans', views.PlanViews.as_view()),
     path('job_areas', views.JobAreaViews.as_view()),
+    path('user_info', views.HunterViews.as_view()),
 ]

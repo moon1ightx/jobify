@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from .models import Hunter, JobArea, Company, Vacancy, Internship, Stack, Roadmap, PlanItem, Story, Hackathon, Techno , University, Degree
 from .serializers import JobAreaSerializer, CompanySerializer, VacancySerializer, IntershipSerializer
 from .serializers import StackSerializer, RoadmapSerializer, PlanSerializer, StorySerializer
-from .serializers import HackatonSerializer, TechSerializer, UniSerializer, DegreeSerializer
+from .serializers import HackatonSerializer, TechSerializer, UniSerializer, DegreeSerializer, HunterSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -101,3 +101,33 @@ class JobAreaViews(APIView):
         job_area = JobArea.objects.all()
         serializer = self.serializer_class(job_area, many=True)
         return Response(serializer.data)
+
+
+class HunterViews(APIView):
+    serializer_class = HunterSerializer
+    permission_classes = (IsAuthenticated,)
+    def post(self, request, format=None):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            hunter = Hunter(
+            about=serializer.validated_data.get("about"),
+            birthday=serializer.validated_data.get("birthday"),
+            city=serializer.validated_data.get("city"),
+            linkedin_link=serializer.validated_data.get("linkedin_link"),
+            github_link=serializer.validated_data.get("github_link"),
+            instagram_link=serializer.validated_data.get("instagram_link"), 
+            phone=serializer.validated_data.get("phone"), 
+            job_area=JobArea.objects.get(pk=request.POST["job_area"]), 
+            user=request.user, 
+            thumbnailPath=request.data.get("thumbnailPath"),
+            univer =University.objects.get(pk=request.POST["univer"]),
+            degree =Degree.objects.get(pk=request.POST["degree"]))
+            hunter.save()
+            print(request.POST.getlist("tags"))
+            techno = Techno.objects.filter(pk__in=request.POST.getlist("techno"))
+            for t in techno:
+                hunter.techno.add(t)
+            response_serializer = self.serializer_class(hunter)
+            return Response(response_serializer.data)
+        else:
+            return Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
