@@ -48,6 +48,12 @@ class Techno(models.Model):
     def __str__(self):
         return self.title
 
+class University(models.Model):
+    title = models.CharField(max_length=200)
+    created_on = models.DateField(auto_now_add=True, blank=True, null=True)
+    def __str__(self):
+        return self.title
+
 class Stack(models.Model):
     title = models.CharField(max_length=200)
     job_area = models.ForeignKey(JobArea,on_delete=models.CASCADE,related_name='stack')
@@ -98,6 +104,7 @@ class Hunter(models.Model):
     phone = models.CharField(max_length=20,blank=True, null=True)
     birthday = models.DateField()
     city = models.CharField(max_length=100)
+    univer = models.ForeignKey(University,on_delete=models.CASCADE, blank=True, null=True,related_name='hunters')
     thumbnailPath = models.ImageField(blank=True, null=True)
     job_area =models.ForeignKey(JobArea,on_delete=models.CASCADE,related_name='hunters')
     about = models.CharField(max_length=200)
@@ -111,6 +118,7 @@ class Hunter(models.Model):
             self.title,
             ", ".join(t.title for t in self.techno.all()),
         )
+   
 class PlanItem(models.Model):
     title = models.CharField(max_length=200)
     created_on = models.DateField(auto_now_add=True, blank=True, null=True)
