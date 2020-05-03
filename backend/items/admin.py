@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Hunter, JobArea, Company, Vacancy, Internship, Stack, Roadmap, PlanItem, Story, Hackathon, Techno , University
+from .models import Hunter, JobArea, Company, Vacancy, Internship, Stack, Roadmap, PlanItem, Story, Hackathon, Techno , University, Degree
 
 class HunterAdmin(admin.ModelAdmin):
     list_display = (  "about", "user","birthday", "city", "phone")
@@ -52,6 +52,10 @@ class UniverAdmin(admin.ModelAdmin):
     list_display = ("title",)
     search_fields =  ("title",)
 
+class DegreeAdmin(admin.ModelAdmin):
+    list_display = ("title",)
+    search_fields =  ("title",)
+
 admin.site.register(Hunter, HunterAdmin)
 admin.site.register(JobArea, JobAdmin)
 admin.site.register(Company, CompAdmin)
@@ -64,3 +68,4 @@ admin.site.register(Roadmap, RoadmapAdmin)
 admin.site.register(PlanItem, PlanAdmin)
 admin.site.register(Techno, TechAdmin)
 admin.site.register(University, UniverAdmin)
+admin.site.register(Degree, DegreeAdmin)
