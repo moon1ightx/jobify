@@ -131,3 +131,29 @@ class HunterViews(APIView):
             return Response(response_serializer.data)
         else:
             return Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request, format=None):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            hunter = Hunter.objects.get(pk=request.POST["id"])
+            hunter.about=serializer.validated_data.get("about")
+            hunter.birthday=serializer.validated_data.get("birthday") 
+            hunter.city=serializer.validated_data.get("city") 
+            hunter.linkedin_link=serializer.validated_data.get("linkedin_link") 
+            hunter.github_link=serializer.validated_data.get("github_link") 
+            hunter.instagram_link=serializer.validated_data.get("instagram_link") 
+            hunter.phone=serializer.validated_data.get("phone") 
+            hunter.job_area=JobArea.objects.get(pk=request.POST["job_area"])
+            hunter.degree=Degree.objects.get(pk=request.POST["degree"])
+            hunter.univer=University.objects.get(pk=request.POST["univer"])
+            hunter.thumbnailPath=request.data.get("thumbnailPath")
+            hunter.save()
+            hunter.techno.clear()
+            techno = Techno.objects.filter(pk__in=request.POST.getlist("techno"))
+            for t in techno:
+                hunter.techno.add(t)
+            response_serializer = self.serializer_class(hunter)
+            return Response(response_serializer.data)
+        else:
+            return Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+
