@@ -49,4 +49,9 @@ class IntershipSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Internship
 		fields = ('id', 'title', 'description', 'created_on','company','duration','salary', 'start_date', 'job_area', 'techno')
-        
+
+class HackatonSerializer(serializers.ModelSerializer):
+	jobArea = JobAreaSerializer(read_only=True)
+	class Meta:
+		model = Hackathon
+		fields = ('id', 'title', 'description', 'created_on','thumbnailPath','duration','place', 'time', 'job_area', )
