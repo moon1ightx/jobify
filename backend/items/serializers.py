@@ -28,14 +28,14 @@ class CompanySerializer(serializers.ModelSerializer):
 		fields = ('id', 'name','address','city','description', 'thumbnailPath','linkedin_link', 'instagram_link')
 
 class StackSerializer(serializers.ModelSerializer):
-	jobArea = JobAreaSerializer(read_only=True)
+	job_area = JobAreaSerializer(read_only=True)
 	techno = TechSerializer(read_only=True, many=True)
 	class Meta:
 		model = Stack
 		fields = ('id', 'title', 'description', 'created_on', 'job_area', 'techno', 'popularity')
 
 class VacancySerializer(serializers.ModelSerializer):
-	jobArea = JobAreaSerializer(read_only=True)
+	job_area = JobAreaSerializer(read_only=True)
 	techno = TechSerializer(read_only=True, many=True)
     company = CompanySerializer(read_only=True)
 	class Meta:
@@ -43,7 +43,7 @@ class VacancySerializer(serializers.ModelSerializer):
 		fields = ('id', 'title', 'description', 'created_on','company','experience','salary', 'perks', 'job_area', 'techno')
 
 class IntershipSerializer(serializers.ModelSerializer):
-	jobArea = JobAreaSerializer(read_only=True)
+	job_area = JobAreaSerializer(read_only=True)
 	techno = TechSerializer(read_only=True, many=True)
     company = CompanySerializer(read_only=True)
 	class Meta:
@@ -51,7 +51,36 @@ class IntershipSerializer(serializers.ModelSerializer):
 		fields = ('id', 'title', 'description', 'created_on','company','duration','salary', 'start_date', 'job_area', 'techno')
 
 class HackatonSerializer(serializers.ModelSerializer):
-	jobArea = JobAreaSerializer(read_only=True)
+	job_area = JobAreaSerializer(read_only=True)
 	class Meta:
 		model = Hackathon
-		fields = ('id', 'title', 'description', 'created_on','thumbnailPath','duration','place', 'time', 'job_area', )
+		fields = ('id', 'title', 'description', 'created_on','thumbnailPath','place', 'time', 'job_area','source' )
+
+class StorySerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Story
+		fields = ('id', 'title', 'description', 'created_on','thumbnailPath','source' )
+
+class HunterSerializer(serializers.ModelSerializer):
+    degree = DegreeSerializer(read_only=True)
+    univer = UniSerializer(read_only=True)
+    job_area = JobAreaSerializer(read_only=True)
+	techno = TechSerializer(read_only=True, many=True)
+    user = UserSerializer(read_only=True)
+	class Meta:
+		model = Hunter
+		fields = ('id','user', 'about', 'techno', 'phone','birthday','city','linkedin_link',"github_link", 'instagram_link','account_created_on','thumbnailPath','degree', 'job_area','univer' )
+
+class PlanSerializer(serializers.ModelSerializer):
+    techno = TechSerializer(read_only=True, many=True)
+	class Meta:
+		model = PlanItem
+		fields = ('id', 'title', 'useful_links', 'created_on','tutorials','techno' )
+
+
+class RoadmapSerializer(serializers.ModelSerializer):
+    plan = PlanSerializer(read_only=True, many=True)
+    user = UserSerializer(read_only=True)
+	class Meta:
+		model = Roadmap
+		fields = ('id', 'title', 'user', 'created_on','plan' )
