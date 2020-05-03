@@ -132,6 +132,11 @@ class HunterViews(APIView):
         else:
             return Response({"msg": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
+    def get(self, request, format=None):
+        hunter = Hunter.objects.filter(user=request.user) 
+        serializer = HunterSerializer(hunter, many=True)
+        return Response(serializer.data)
+
     def put(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
