@@ -122,7 +122,7 @@ class Hunter(models.Model):
     techno = models.ManyToManyField(Techno)
     def __str__(self):
         return "%s (%s)" % (
-            self.title,
+            self.about,
             ", ".join(t.title for t in self.techno.all()),
         )
    
