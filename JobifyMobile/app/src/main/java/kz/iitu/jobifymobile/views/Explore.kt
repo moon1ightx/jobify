@@ -22,6 +22,7 @@ import kz.iitu.jobifymobile.viewmodels.MainFactory
 import kz.iitu.jobifymobile.viewmodels.MainViewModel
 import kz.iitu.jobifymobile.views.adapters.HachathonAdapter
 import kz.iitu.jobifymobile.views.adapters.StacksAdapter
+import kz.iitu.jobifymobile.views.adapters.StoryAdapter
 
 /**
  * A simple [Fragment] subclass.
@@ -60,11 +61,11 @@ class Explore : Fragment() {
         })
 
         exploreViewModel.stackLiveData.observe(this, Observer {
-           stackRecyclerView.adapter = StacksAdapter(it)
+            stackRecyclerView.adapter = StacksAdapter(it)
         })
 
         exploreViewModel.storyLiveData.observe(this, Observer {
-
+            storyRecyclerView.adapter = StoryAdapter(it)
         })
 
     }
