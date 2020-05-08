@@ -58,7 +58,7 @@ class Dashboard : Fragment() {
     private fun initUI(){
         mainViewModel.loadVacancies()
         mainViewModel.loadCompanies()
-        mainViewModel.loadHackathons()
+        mainViewModel.loadInterships()
     }
 
 

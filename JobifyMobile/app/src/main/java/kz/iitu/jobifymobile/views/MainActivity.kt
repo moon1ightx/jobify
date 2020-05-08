@@ -17,13 +17,13 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     private fun initUI(){
         bottom_navigation.setOnNavigationItemSelectedListener(this)
-        bottom_navigation.selectedItemId = R.id.explore
+        bottom_navigation.selectedItemId = R.id.dashboard
     }
 
     val dashboard= Dashboard()
     val explore = Explore()
     val profile = Profile()
-    
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.dashboard -> {

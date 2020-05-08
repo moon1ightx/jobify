@@ -56,42 +56,6 @@ class MainViewModel(
         }
     }
 
-    private val storyMutableLiveData = MutableLiveData<List<Story>>()
-    val storyLiveData: LiveData<List<Story>> = storyMutableLiveData
-
-    fun loadStories(){
-        launch {
-            val response =vacancyRepository.loadStories()
-            if (response!=null){
-                storyMutableLiveData.value = response
-            }
-        }
-    }
-
-    private val hackathonMutableLiveData = MutableLiveData<List<Hackathon>>()
-    val hackathonLiveData: LiveData<List<Hackathon>> = hackathonMutableLiveData
-
-    fun loadHackathons(){
-        launch {
-            val response =vacancyRepository.loadHackathons()
-            if (response!=null){
-                hackathonMutableLiveData.value = response
-            }
-        }
-    }
-
-    private val stackMutableLiveData = MutableLiveData<List<Stack>>()
-    val stackLiveData: LiveData<List<Stack>> = stackMutableLiveData
-
-    fun loadStacks(){
-        launch {
-            val response =vacancyRepository.loadStacks()
-            if (response!=null){
-                stackMutableLiveData.value = response
-            }
-        }
-    }
-
     override fun onCleared() {
         super.onCleared()
         job.cancel()
