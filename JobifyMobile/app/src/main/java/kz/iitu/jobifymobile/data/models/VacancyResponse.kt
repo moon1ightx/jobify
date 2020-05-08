@@ -14,8 +14,8 @@ data class Vacancy(
     val perks: String,
     val job_area: JobArea,
     val techno: List<Techno>
-
 )
+
 data class Company(
     val id: Int,
     val name: String,
