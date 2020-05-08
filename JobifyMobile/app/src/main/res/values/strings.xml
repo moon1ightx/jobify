@@ -16,4 +16,7 @@
     <string name="description">Description Description Description</string>
     <string name="salary">Salary:</string>
     <string name="comp">Company:</string>
+    <string name="direction">Направления:</string>
+    <string name="time">Время:</string>
+    <string name="place">Место:</string>
 </resources>

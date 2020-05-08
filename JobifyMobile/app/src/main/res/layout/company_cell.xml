@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textStyle="bold"
+                android:layout_margin="@dimen/_8sdp"
                 android:textSize="@dimen/_12sdp"
                 android:text="@string/title"/>
             <ImageView

@@ -20,6 +20,7 @@ import kz.iitu.jobifymobile.viewmodels.ExploreFactory
 import kz.iitu.jobifymobile.viewmodels.ExploreViewModel
 import kz.iitu.jobifymobile.viewmodels.MainFactory
 import kz.iitu.jobifymobile.viewmodels.MainViewModel
+import kz.iitu.jobifymobile.views.adapters.HachathonAdapter
 import kz.iitu.jobifymobile.views.adapters.StacksAdapter
 
 /**
@@ -55,7 +56,7 @@ class Explore : Fragment() {
     }
     private fun initObservers(){
         exploreViewModel.hackathonLiveData.observe(this, Observer {
-            Log.d("vacancies", it.toString() )
+            hackthonRecyclerView.adapter = HachathonAdapter(it)
         })
 
         exploreViewModel.stackLiveData.observe(this, Observer {
