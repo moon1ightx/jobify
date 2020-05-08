@@ -38,7 +38,7 @@ class Explore : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view: View = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_explore, container, false)
         initUI()
         initObservers()
         return  view

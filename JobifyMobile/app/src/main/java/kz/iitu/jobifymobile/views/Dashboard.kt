@@ -9,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kz.iitu.jobifymobile.R
 import kz.iitu.jobifymobile.data.networking.ApiFactory
 import kz.iitu.jobifymobile.data.repository.VacancyRepository
 import kz.iitu.jobifymobile.viewmodels.MainFactory
 import kz.iitu.jobifymobile.viewmodels.MainViewModel
+import kz.iitu.jobifymobile.views.adapters.VacancyAdapter
 
 /**
  * A simple [Fragment] subclass.
@@ -40,10 +43,14 @@ class Dashboard : Fragment() {
         return  view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        vacancyRecyclerView.layoutManager = LinearLayoutManager(this.context)
+    }
 
     private fun initObservers(){
         mainViewModel.vacancyLiveData.observe(this, Observer {
-            Log.d("vacancies", it.toString() )
+            vacancyRecyclerView.adapter = VacancyAdapter(it)
         })
 
         mainViewModel.internshipLiveData.observe(this, Observer {
