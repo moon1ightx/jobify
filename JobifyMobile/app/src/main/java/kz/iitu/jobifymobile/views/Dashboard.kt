@@ -16,6 +16,7 @@ import kz.iitu.jobifymobile.data.networking.ApiFactory
 import kz.iitu.jobifymobile.data.repository.VacancyRepository
 import kz.iitu.jobifymobile.viewmodels.MainFactory
 import kz.iitu.jobifymobile.viewmodels.MainViewModel
+import kz.iitu.jobifymobile.views.adapters.InternshipAdapter
 import kz.iitu.jobifymobile.views.adapters.VacancyAdapter
 
 /**
@@ -45,7 +46,9 @@ class Dashboard : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         vacancyRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        intershipRecyclerView.layoutManager = LinearLayoutManager(this.context)
     }
 
     private fun initObservers(){
@@ -54,7 +57,7 @@ class Dashboard : Fragment() {
         })
 
         mainViewModel.internshipLiveData.observe(this, Observer {
-            Log.d("internships", it.toString() )
+            intershipRecyclerView.adapter = InternshipAdapter(it)
         })
 
         mainViewModel.companyLiveData.observe(this, Observer {
