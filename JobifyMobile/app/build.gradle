@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -32,4 +34,39 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-}
+
+
+    def retrofit2_version = "2.6.1"
+    def okhttp3_version = "4.3.1"
+    def kotlinCoroutineVersion = "1.0.1"
+    def picassoVersion = "2.71828"
+    def recyclerViewVersion = "1.0.0"
+    def sdpVersion = "1.0.5"
+    def gsonConverterVersion = "2.6.1"
+    def roomVersion = "2.1.0"
+
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    implementation "androidx.cardview:cardview:$recyclerViewVersion"
+
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
+    kapt "androidx.lifecycle:lifecycle-compiler:2.1.0"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$gsonConverterVersion"
+
+    implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
+
+    implementation("com.squareup.picasso:picasso:$picassoVersion") {
+        exclude group: "com.android.support"
+    }
+
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutineVersion"
+
+    implementation "com.intuit.sdp:sdp-android:$sdpVersion"
+
+    }

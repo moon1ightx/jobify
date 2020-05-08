@@ -1,7 +1,8 @@
-package kz.iitu.jobifymobile
+package kz.iitu.jobifymobile.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kz.iitu.jobifymobile.R
 
 class MainActivity : AppCompatActivity() {
 
