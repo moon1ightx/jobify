@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">Jobify Mobile</string>
+    <string name="app_name">Jobify </string>
+    <string name="menu_item1">Dashboard</string>
+    <string name="menu_item2">Explore</string>
+    <string name="menu_item3">Profile</string>
 </resources>
