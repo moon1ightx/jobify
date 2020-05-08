@@ -31,7 +31,7 @@ class VacancyAdapter (
             view.job_area.text = vacancy.job_area.title
             var req = "Нужно знать: "
             vacancy.techno.forEach{
-                req=req+it.title
+                req=req+it.title+" "
             }
             view.techno.text = req
         }

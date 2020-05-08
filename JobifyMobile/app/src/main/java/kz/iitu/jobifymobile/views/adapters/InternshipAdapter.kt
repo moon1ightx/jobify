@@ -32,7 +32,7 @@ class InternshipAdapter (
             view.job_area.text = internship.job_area.title
             var req = "Нужно знать: "
             internship.techno.forEach{
-                req=req+it.title
+                req=req+it.title+" "
             }
             view.techno.text = req
         }

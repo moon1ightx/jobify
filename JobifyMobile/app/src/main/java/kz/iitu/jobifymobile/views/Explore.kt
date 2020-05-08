@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.fragment_explore.*
 
 import kz.iitu.jobifymobile.R
 import kz.iitu.jobifymobile.data.networking.ApiFactory
@@ -18,6 +20,7 @@ import kz.iitu.jobifymobile.viewmodels.ExploreFactory
 import kz.iitu.jobifymobile.viewmodels.ExploreViewModel
 import kz.iitu.jobifymobile.viewmodels.MainFactory
 import kz.iitu.jobifymobile.viewmodels.MainViewModel
+import kz.iitu.jobifymobile.views.adapters.StacksAdapter
 
 /**
  * A simple [Fragment] subclass.
@@ -44,17 +47,23 @@ class Explore : Fragment() {
         return  view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        stackRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        hackthonRecyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        storyRecyclerView.layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+    }
     private fun initObservers(){
         exploreViewModel.hackathonLiveData.observe(this, Observer {
             Log.d("vacancies", it.toString() )
         })
 
         exploreViewModel.stackLiveData.observe(this, Observer {
-            Log.d("internships", it.toString() )
+           stackRecyclerView.adapter = StacksAdapter(it)
         })
 
         exploreViewModel.storyLiveData.observe(this, Observer {
-            Log.d("companies", it.toString() )
+
         })
 
     }
