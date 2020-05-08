@@ -28,7 +28,7 @@ class InternshipAdapter (
             view.vacancyDes.text = internship.description
             view.vacancyCompany.text = "Компания: "+internship.company.name
             view.salary.text = internship.salary.toString()+" KZT"
-            view.duration.text = internship.duration.toString()+" месяцев"
+            view.duration.text = internship.duration.toString()+" мес"
             view.job_area.text = internship.job_area.title
             var req = "Нужно знать: "
             internship.techno.forEach{
