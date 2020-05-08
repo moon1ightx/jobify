@@ -11,7 +11,7 @@ data class Hackathon(
     val place: String,
     val source: String,
     val time: Date,
-    val job_area: JobArea
+    val job_area: List<JobArea>
 )
 data class Story(
     val id : Int,

@@ -24,17 +24,47 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         initUI()
         initObservers()
     }
+
     private fun initObservers(){
-        mainViewModel.vacancyLiveData.observe(this, Observer { setupData(it) })
+        mainViewModel.vacancyLiveData.observe(this, Observer {
+            Log.d("vacancies", it.toString() )
+        })
+
+        mainViewModel.internshipLiveData.observe(this, Observer {
+            Log.d("internships", it.toString() )
+        })
+
+        mainViewModel.companyLiveData.observe(this, Observer {
+            Log.d("companies", it.toString() )
+        })
+
+        mainViewModel.stackLiveData.observe(this, Observer {
+            Log.d("stacks", it.toString() )
+        })
+
+        mainViewModel.hackathonLiveData.observe(this, Observer {
+            Log.d("hackathons", it.toString() )
+        })
+
+        mainViewModel.storyLiveData.observe(this, Observer {
+            Log.d("stories", it.toString() )
+        })
     }
+
     private fun initUI(){
         mainViewModel.loadVacancies()
+        mainViewModel.loadCompanies()
+        mainViewModel.loadHackathons()
+        mainViewModel.loadStories()
+        mainViewModel.loadInterships()
+        mainViewModel.loadStacks()
     }
-    private fun setupData(vacancies: List<Vacancy>){
+
+    private fun setupVacancies(vacancies: List<Vacancy>){
         Log.d("vacancies",vacancies.toString() )
     }
+
 }
