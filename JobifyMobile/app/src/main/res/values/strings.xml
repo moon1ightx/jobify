@@ -19,4 +19,9 @@
     <string name="direction">Направления:</string>
     <string name="time">Время:</string>
     <string name="place">Место:</string>
+    <string name="labelUsername">Юзернэйм:</string>
+    <string name="labelPass">Пароль:</string>
+    <string name="welcome">Добро Пожаловать)</string>
+    <string name="login">Войти</string>
+    <string name="warning">Пожалуйста, заполните!</string>
 </resources>

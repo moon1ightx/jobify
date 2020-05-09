@@ -1,7 +1,7 @@
 package kz.iitu.jobifymobile.data.networking
 
 import kz.iitu.jobifymobile.data.models.*
-import retrofit2.http.GET
+import retrofit2.http.*
 
 interface ApiClient {
 
@@ -22,5 +22,17 @@ interface ApiClient {
 
     @GET("stacks")
     suspend fun getStacks(): List<Stack>
+
+    @POST("login")
+    @FormUrlEncoded
+    suspend fun login(
+        @Field("username") username: String,
+        @Field("password") password: String
+    ): LoginResponse
+
+    @GET("user_info")
+    suspend fun getUserInfo(
+        @Header("Authorization") bearer: String
+    ):List<UserInfoResponse>
 
 }
