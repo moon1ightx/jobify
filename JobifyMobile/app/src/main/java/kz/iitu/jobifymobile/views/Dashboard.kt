@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kz.iitu.jobifymobile.R
+import kz.iitu.jobifymobile.data.db.AppDatabase
 import kz.iitu.jobifymobile.data.networking.ApiFactory
 import kz.iitu.jobifymobile.data.repository.VacancyRepository
 import kz.iitu.jobifymobile.viewmodels.MainFactory
@@ -28,7 +29,8 @@ class Dashboard : Fragment() {
     private val mainViewModel by lazy{
         ViewModelProviders.of(this, MainFactory(
             VacancyRepository(
-                ApiFactory.getApi()
+                ApiFactory.getApi(),
+                AppDatabase.getInstance(this.context!!)!!.getMainDao()!!
             )
         )
         )[MainViewModel::class.java]

@@ -1,5 +1,7 @@
 package kz.iitu.jobifymobile.viewmodels
 
+import android.accounts.NetworkErrorException
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +12,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kz.iitu.jobifymobile.data.models.*
 import kz.iitu.jobifymobile.data.repository.ExploreRepository
+import java.net.ConnectException
 import kotlin.coroutines.CoroutineContext
 
 class ExploreViewModel(
@@ -26,9 +29,13 @@ class ExploreViewModel(
 
     fun loadStories(){
         launch {
-            val response =exploreRepository.loadStories()
-            if (response!=null){
-                storyMutableLiveData.value = response
+            try {
+                val response =exploreRepository.loadStories()
+                if (response!=null){
+                    storyMutableLiveData.value = response
+                }
+            }catch (e: ConnectException){
+                Log.d("ntwrk", "No Interner Connection")
             }
         }
     }
@@ -38,10 +45,15 @@ class ExploreViewModel(
 
     fun loadHackathons(){
         launch {
-            val response =exploreRepository.loadHackathons()
-            if (response!=null){
-                hackathonMutableLiveData.value = response
-            }
+            try {
+                val response =exploreRepository.loadHackathons()
+                if (response!=null){
+                    hackathonMutableLiveData.value = response
+                }
+            }catch (e: ConnectException){
+            Log.d("ntwrk", "No Interner Connection")
+        }
+
         }
     }
 
@@ -50,9 +62,13 @@ class ExploreViewModel(
 
     fun loadStacks(){
         launch {
-            val response =exploreRepository.loadStacks()
-            if (response!=null){
-                stackMutableLiveData.value = response
+            try{
+                val response =exploreRepository.loadStacks()
+                if (response!=null){
+                    stackMutableLiveData.value = response
+                }
+            }catch (e: ConnectException){
+                Log.d("ntwrk", "No Interner Connection")
             }
         }
     }
