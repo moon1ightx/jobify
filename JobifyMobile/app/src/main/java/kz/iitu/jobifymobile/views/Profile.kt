@@ -47,12 +47,13 @@ class Profile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(UserSession.isNotLoggedIn(this.context!!))
-            startActivity(Intent(this.context!!,LoginActivity::class.java))
-
-        initUI()
-        initObservers()
-
+        if(UserSession.isNotLoggedIn(this.context!!)) {
+            startActivity(Intent(this.context!!, LoginActivity::class.java))
+            activity!!.finish()
+        }else {
+            initUI()
+            initObservers()
+        }
     }
     private fun initObservers() {
         loginViewModel.userLiveData.observe(this, Observer {
