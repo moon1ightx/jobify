@@ -7,9 +7,10 @@ data class UserInfoResponse(
     val about: String,
     val techno: List<Techno>,
     val phone: String,
-    val bitrthday: Date,
+    val birthday: Date,
     val city: String,
     val github_link: String,
+    val thumbnailPath: String,
     val univer: Univer,
     val job_area: JobArea
     )

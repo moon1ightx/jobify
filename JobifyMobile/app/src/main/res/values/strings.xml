@@ -24,4 +24,8 @@
     <string name="welcome">Добро Пожаловать)</string>
     <string name="login">Войти</string>
     <string name="warning">Пожалуйста, заполните!</string>
+    <string name="фищге">О себе:</string>
+    <string name="contact">Контакты:</string>
+    <string name="skills">Навыки:</string>
+    <string name="bday">Дата Рождения:</string>
 </resources>

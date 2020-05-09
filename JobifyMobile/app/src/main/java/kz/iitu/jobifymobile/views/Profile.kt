@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 import kz.iitu.jobifymobile.R
 import kz.iitu.jobifymobile.data.UserSession
@@ -63,8 +65,20 @@ class Profile : Fragment() {
         loginViewModel.getUserInfo(bearer)
     }
 
-    private fun setupData(user: UserInfoResponse) {
-
+    private fun setupData(userInf: UserInfoResponse) {
+        nameTxt.text = userInf.user.first_name+" "+userInf.user.last_name
+        birthday.text = userInf.birthday.toString()
+        github.text = "Github: "+userInf.github_link
+        phone.text = userInf.phone
+        email.text = userInf.user.email
+        Picasso.get().load("http://10.0.2.2:8000"+userInf.thumbnailPath).into(picture_view)
+        var req = ""
+        userInf.techno.forEach{
+            req = req + it.title+" "
+        }
+        techo.text = req
+        about.text = userInf.about
+        univer.text = userInf.univer.title
     }
 
 }
