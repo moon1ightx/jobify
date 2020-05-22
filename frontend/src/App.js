@@ -8,16 +8,21 @@ import Profile from './containers/profile'
 import Auth from './containers/auth'
 import Explore from './containers/explore'
 
+import {store} from './store'
+
+
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Route path="/" exact component={Main} />
-        <Route path="/auth" exact component={Auth} />
-        <Route path="/profile" exact component={Profile} />
-        <Route path="/explore" exact component={Explore} />
-      </Router>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Router>
+          <Route path="/" exact component={Main} />
+          <Route path="/auth" exact component={Auth} />
+          <Route path="/profile" exact component={Profile} />
+          <Route path="/explore" exact component={Explore} />
+        </Router>
+      </div>
+    </Provider>
   );
 }
 
