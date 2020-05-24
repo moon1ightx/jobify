@@ -1,0 +1,39 @@
+.active{
+    background-color: #69904a;
+    border-radius: 7px;
+    padding: 4px;
+}
+
+#cloth{
+    color: #000000;
+    font-weight: lighter;
+}
+
+.nav-link{
+	color: #000000;
+	font-size: 14px;
+	display: inline;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-item{
+	padding-top: 15px;
+	margin-left: 10px;
+	padding-bottom: 15px;
+}
+nav{
+	padding-top: 5px;
+}
+  a:hover {
+  color:  grey;
+}  
+
+#active{
+	 color:  white;
+}
+.box {
+    width: 15px;
+    height: 15px;
+    background-color: #69904a;
+    margin: 5px;
+}

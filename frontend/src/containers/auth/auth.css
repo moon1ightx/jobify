@@ -1,0 +1,62 @@
+.logo {
+    width: 100%;
+}
+.base {
+    background-color: white;
+}
+.Auth {
+    background-color: white;
+}
+.login-title{
+   padding: 10%;
+   text-align: start;
+}
+.login-title h2{
+    color: #a3b09d;
+    font-weight: lighter;
+    font-size: 40px;
+}
+.line {
+   margin-top: 20px;
+   margin-bottom: 20px;
+    width: 70%;
+    height: 15px;
+    background-color:  #a3b09d;
+}
+
+.login{
+    border: 1px solid #a3b09d;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+}
+input{
+    border-radius: 10px;
+    height: 40px;
+    width: 250px;
+    padding: 10px;
+    color: black;
+    margin: 20px;
+    background-color: #c0ceb9;
+    border: 0;
+}
+button{
+    border-radius: 10px;
+    height: 50px;
+    width: 150px;
+    padding: 10px;
+    background-color: transparent;
+    margin: 20px;
+    color:  #a3b09d;
+    border: solid 3px #a3b09d;
+}
+.or{
+    text-align: center;
+    background-color: #a3b09d;
+    color: white;
+    border-radius: 30px;
+    width: 20px;
+    height: 30px;
+}
+

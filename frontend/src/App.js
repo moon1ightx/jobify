@@ -7,9 +7,15 @@ import Main from './containers/main'
 import Profile from './containers/profile'
 import Auth from './containers/auth'
 import Explore from './containers/explore'
-
+import {USER_LOGIN} from './store/actions/types'
 import {store} from './store'
 
+if(localStorage.getItem('access_token')) {
+  store.dispatch({
+    type: USER_LOGIN,
+    payload: localStorage.getItem('access_token')
+  })
+}
 
 function App() {
   return (
