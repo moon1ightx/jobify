@@ -1,0 +1,74 @@
+.nauth{
+    margin: 50px; 
+}
+.dark{
+    background-color: #5f645e;
+    color: black;
+}
+
+.photo{
+    width: 130px;
+    height: 130px;
+    border-radius: 65px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.fname{
+    color: #a3b09d;
+}
+.lname{
+    color: #a3b09d;
+    font-weight: 550;
+    margin-left: 5px;
+}
+.hor {
+    width: 90%;
+    height: 1px;
+    background-color: #a3b09d;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.con{
+    text-align: start;
+    padding: 50px;
+}
+.contacts {
+    font-weight: 500;
+}
+.citem {
+    font-weight: 300;
+}
+.cicon {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+.d{
+    margin-bottom: 4px;
+}
+.light{
+    padding: 70px;
+    text-align: start;
+}
+.tit{
+    color:  #a3b09d;
+}
+.about{
+    font-weight: 300;
+    font-style: italic;
+    margin: 20px;
+}
+.ic{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+.techno{
+    font-weight: 300;
+    font-style: italic;
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid  #5f645e;
+    padding: 5px;
+}

@@ -1,5 +1,5 @@
 
-import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, ERROR_HANDLE} from './types'
+import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, ERROR_HANDLE, GET_USER_INFO} from './types'
 import axios from 'axios'
 
 
@@ -50,6 +50,19 @@ export const logIn = (user) => dispatch =>{
         type: USER_LOGOUT
     })
  };
- 
- 
+
+ export const getUserInfo = () => dispatch =>{
+    axios.get('/api/user_info', { headers: {
+        "Content-Type": undefined
+    }
+})
+     .then(res => {
+         console.log("Response: ", res, res.data)
+         dispatch({
+             type: GET_USER_INFO,
+             payload: res.data
+         })
+     })
+     .catch(err => console.log(err))
+ };
  
