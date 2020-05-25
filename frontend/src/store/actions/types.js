@@ -2,6 +2,10 @@
 export const GET_VACANCIES = 'GET_VACANCIES'
 export const GET_INTERNSHIPS = 'GET_INTERNSHIPS'
 export const GET_COMPANIES = 'GET_COMPANIES'
+export const GET_UNIVERS = 'GET_UNIVERS'
+export const GET_DEGREES = 'GET_DEGREES'
+export const GET_JOB_AREAS = 'GET_JOB_AREAS'
+export const GET_TECHNOS = 'GET_TECHNOS'
 
 export const GET_STORIES = 'GET_STORIES'
 export const GET_HACKATHONS = 'GET_HACKATHONS'
@@ -13,3 +17,4 @@ export const USER_LOGOUT = 'USER_LOGOUT'
 export const ERROR_HANDLE = 'ERROR_HANDLE'
 
 export const GET_USER_INFO = 'GET_USER_INFO'
+export const ADD_USER_INFO = 'ADD_USER_INFO'

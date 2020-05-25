@@ -1,5 +1,5 @@
 
-import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, ERROR_HANDLE, GET_USER_INFO} from './types'
+import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, ERROR_HANDLE, GET_USER_INFO, ADD_USER_INFO} from './types'
 import axios from 'axios'
 
 
@@ -66,3 +66,28 @@ export const logIn = (user) => dispatch =>{
      .catch(err => console.log(err))
  };
  
+ export const addUserInfo = data => dispatch =>{
+    const fm = new FormData()
+    Object.keys(data).map(key => {
+        if(key !== 'techno') fm.append([key], data[key])
+        else {
+            data[key].map(techno => fm.append([key], techno))
+        }
+    })
+    axios.post('/api/user_info', fm, {
+        headers: {
+        "Content-Type": undefined
+    }})
+     .then(res => {
+         dispatch({
+             type: ADD_USER_INFO,
+             payload: res.data
+         })
+        })
+     .catch(err => {
+        dispatch({
+            type: ERROR_HANDLE,
+            payload: err.response.data
+        })
+     })
+ };

@@ -73,9 +73,9 @@ function Auth(props) {
                 <div className='col-5 login' >
                     <form onSubmit={handleLog} validateMessages={validateMessages}>
                         <h5>Войти</h5>
-                        <input type='text' placeholder='Юзернэйм..' name="username" value={formData.username} onChange={handleChange}/><br />
-                        <input type='password' placeholder='Пароль..' name="password" value={formData.password} onChange={handleChange}/><br />
-                        <button type='submit'>Войти </button><br />
+                        <input  className='inputV' type='text' placeholder='Юзернэйм..' name="username" value={formData.username} onChange={handleChange}/><br />
+                        <input  className='inputV' type='password' placeholder='Пароль..' name="password" value={formData.password} onChange={handleChange}/><br />
+                        <button  className='buttonV' type='submit'>Войти </button><br />
                     </form>
                     {error.detail && <span style={{color: `tomato`}}> {error.detail} <br/></span>} 
                 </div>
@@ -83,12 +83,12 @@ function Auth(props) {
                 <div className='col-5 login' >
                     <form onSubmit={handleSign} validateMessages={validateMessages}>
                         <h5>Регистрация</h5>
-                        <input type='text' placeholder='Юзернэйм..' name="username" value={formDataS.username} onChange={handleChangeS}/><br />
-                        <input type='text' placeholder='Имя..' name="first_name" value={formDataS.first_name} onChange={handleChangeS}/><br />
-                        <input type='text' placeholder='Фамилия..' name="last_name" value={formDataS.last_name} onChange={handleChangeS}/><br />
-                        <input type='text' placeholder='Email..' name="email" value={formDataS.email} onChange={handleChangeS}/><br />
-                        <input type='password' placeholder='Пароль..' name="password" value={formDataS.password} onChange={handleChangeS}/><br />
-                        <button type='submit'>Регистрация </button><br />
+                        <input className='inputV' type='text' placeholder='Юзернэйм..' name="username" value={formDataS.username} onChange={handleChangeS}/><br />
+                        <input  className='inputV' type='text' placeholder='Имя..' name="first_name" value={formDataS.first_name} onChange={handleChangeS}/><br />
+                        <input  className='inputV' type='text' placeholder='Фамилия..' name="last_name" value={formDataS.last_name} onChange={handleChangeS}/><br />
+                        <input  className='inputV' type='text' placeholder='Email..' name="email" value={formDataS.email} onChange={handleChangeS}/><br />
+                        <input  className='inputV' type='password' placeholder='Пароль..' name="password" value={formDataS.password} onChange={handleChangeS}/><br />
+                        <button  className='buttonV' type='submit'>Регистрация </button><br />
                     </form>
                     {error.detail && <span style={{color: `tomato`}}> {error.detail} <br/></span>}
                 </div>
