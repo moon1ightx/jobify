@@ -1,9 +1,10 @@
-import {GET_HACKATHONS, GET_STORIES, GET_STACKS} from '../actions/types'
+import {GET_HACKATHONS, GET_STORIES, GET_STACKS, GET_TESTS, ADD_ROADMAP} from '../actions/types'
 
 const initialState = {
     stacks: [],
     stories: [],
-    hackathons: []
+    hackathons: [],
+    tests: []
  }
  
 export default function (state=initialState, action){
@@ -23,6 +24,15 @@ export default function (state=initialState, action){
             return {
                 ...state,
                 hackathons: action.payload
+            }
+         case GET_TESTS:
+            return {
+                ...state,
+                tests: action.payload
+            }
+        case ADD_ROADMAP:
+            return {
+                ...state,
             }
         default:
             return state;

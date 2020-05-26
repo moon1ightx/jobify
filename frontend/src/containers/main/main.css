@@ -1,0 +1,45 @@
+.lines{
+    margin-bottom: 20px;
+    width: 100%;
+    height: 5px;
+    margin-top: 20px;
+    background-color: #a3b09d;
+}
+.lb{
+    color: #949e90;
+}
+.us{
+    background-image: linear-gradient(white, #eceae6);
+    width: 100%;
+    padding: 50px;
+}
+.gr{
+    color: #949e90;
+}
+.icm {
+    width: 45px;
+    height: 45px;
+    margin: 10px;
+}
+.p{
+    height: 70px;
+    width: 20px;
+}
+
+.boxs{
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 30px;
+}
+.boxz{
+    background-color: white;
+    border-radius: 10px;
+    margin: 30px;
+    padding: 10px;
+}
+.comp{
+    width: 100%;
+    height: 100%;
+}
+.li{color: #5f645e;}

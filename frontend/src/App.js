@@ -3,6 +3,10 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {Provider} from 'react-redux';
 
+import Quiz from  './containers/quiz'
+import Story from  './containers/story'
+import Internship from './containers/internships'
+import Vacancy from './containers/vacancy'
 import Main from './containers/main'
 import Profile from './containers/profile'
 import Auth from './containers/auth'
@@ -26,6 +30,10 @@ function App() {
           <Route path="/auth" exact component={Auth} />
           <Route path="/profile" exact component={Profile} />
           <Route path="/explore" exact component={Explore} />
+          <Route path="/vacancy" exact component={Vacancy} />
+          <Route path="/inter" exact component={Internship} />
+          <Route path="/story" exact component={Story} />
+          <Route path="/quiz" exact component={Quiz} />
         </Router>
       </div>
     </Provider>

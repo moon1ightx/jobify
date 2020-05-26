@@ -1,5 +1,5 @@
 
-import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, ERROR_HANDLE, GET_USER_INFO, ADD_USER_INFO} from './types'
+import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, ERROR_HANDLE, GET_USER_INFO, ADD_USER_INFO,GET_CV} from './types'
 import axios from 'axios'
 
 
@@ -60,6 +60,20 @@ export const logIn = (user) => dispatch =>{
          console.log("Response: ", res, res.data)
          dispatch({
              type: GET_USER_INFO,
+             payload: res.data
+         })
+     })
+     .catch(err => console.log(err))
+ };
+ export const getCV = () => dispatch =>{
+    axios.get('/api/cv', { headers: {
+        "Content-Type": undefined
+    }
+})
+     .then(res => {
+         console.log("Response: ", res, res.data)
+         dispatch({
+             type: GET_CV,
              payload: res.data
          })
      })

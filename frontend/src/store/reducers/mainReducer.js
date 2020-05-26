@@ -21,7 +21,7 @@ export default function (state=initialState, action){
         case GET_INTERNSHIPS:
             return {
                 ...state,
-                interships: action.payload
+                internships: action.payload
             }
         case GET_COMPANIES:
             return {

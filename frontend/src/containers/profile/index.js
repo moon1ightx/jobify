@@ -3,7 +3,7 @@ import {  Link } from "react-router-dom";
 import Header from '../../components/header'
 import Footer  from '../../components/footer'
 import './profile.css'
-import {getUserInfo, addUserInfo} from '../../store/actions/authActions'
+import {getUserInfo, addUserInfo, getCV} from '../../store/actions/authActions'
 import {getDegrees, getUnivers,getJobArea, getTechnos } from '../../store/actions/mainActions'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom';
@@ -82,7 +82,10 @@ function Profile(props) {
       setFormData({...formData, thumbnailPath: info.file.originFileObj})
     }
   }
-
+  const handleLog = (e) => {
+    e.preventDefault();
+    props.getCV()
+  };
   const {isAuth} = props.authReducer
   useEffect(onMount(props), [])
   const {user_info} = props.authReducer
@@ -114,6 +117,7 @@ function Profile(props) {
             <img className='ic' src='images/kn.png'/>
             {item.techno.map(i => ( <p className='techno'>{i.title} </p>))}
            </div>
+           <form onSubmit={handleLog}><label><b className='redd'>*</b>При нажатии на эту кнопку мы отправим Вам на почту СV</label><button  className='buttonV' type='submit'>Получить CV </button><br /></form>
     </div>
 
     <div className='col-4 dark'>
@@ -282,7 +286,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-getUserInfo, addUserInfo, getDegrees, getUnivers, getTechnos, getJobArea
+getUserInfo, addUserInfo, getDegrees, getUnivers, getTechnos, getJobArea, getCV
 }
 
 export default connect(
