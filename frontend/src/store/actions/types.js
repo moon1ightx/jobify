@@ -19,6 +19,7 @@ export const ERROR_HANDLE = 'ERROR_HANDLE'
 
 export const GET_USER_INFO = 'GET_USER_INFO'
 export const ADD_USER_INFO = 'ADD_USER_INFO'
+export const UPDATE_USER_INFO = 'UPDATE_USER_INFO'
 export const GET_CV = 'GET_CV'
 export const ADD_ROADMAP = 'ADD_ROADMAP'
 export const GET_ROADMAP = 'GET_ROADMAP'

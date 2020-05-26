@@ -58,7 +58,7 @@ function Explore(props) {
    <div className='row'>{item.techno.map(i => ( <p className='techno'>{i.title} </p>))}</div>
          </div>
          <div className='col-3'>
-         <button  className='buttonV' type='submit'><Link className='li'to={{pathname:"/quiz", stack:{item} }}>Пройти Тест </Link></button>
+         <button  className='buttonV' type='submit'><Link className='li' to={{pathname:"/quiz", stack:{item} }}>Пройти Тест </Link></button>
 
        </div>
           </div> 

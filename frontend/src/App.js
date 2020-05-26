@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {Provider} from 'react-redux';
 
+
+import Edit from  './containers/edit'
 import Quiz from  './containers/quiz'
 import Story from  './containers/story'
 import Internship from './containers/internships'
@@ -34,6 +36,7 @@ function App() {
           <Route path="/inter" exact component={Internship} />
           <Route path="/story" exact component={Story} />
           <Route path="/quiz" exact component={Quiz} />
+          <Route path="/edit" exact component={Edit} />
         </Router>
       </div>
     </Provider>

@@ -1,5 +1,5 @@
 
-import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, GET_USER_INFO, ADD_USER_INFO, GET_CV, GET_ROADMAP} from '../actions/types'
+import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, GET_USER_INFO, ADD_USER_INFO, GET_CV, GET_ROADMAP, UPDATE_USER_INFO} from '../actions/types'
 import jwt_decode from 'jwt-decode'
 import axios from 'axios'
 
@@ -57,6 +57,11 @@ export default function (state=initialState, action){
                 ...state,
             }
         case ADD_USER_INFO:
+            return {
+                ...state,
+               
+                }
+         case UPDATE_USER_INFO:
             return {
                 ...state,
                

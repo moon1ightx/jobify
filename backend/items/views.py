@@ -150,7 +150,7 @@ class HunterViews(APIView):
     def put(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            hunter = Hunter.objects.get(pk=request.POST["id"])
+            hunter = Hunter.objects.get(user=request.user)
             hunter.about=serializer.validated_data.get("about")
             hunter.birthday=serializer.validated_data.get("birthday") 
             hunter.city=serializer.validated_data.get("city") 

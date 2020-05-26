@@ -3,7 +3,7 @@ import {  Link } from "react-router-dom";
 import Header from '../../components/header'
 import Footer  from '../../components/footer'
 import './profile.css'
-import {getUserInfo, addUserInfo, getCV, getRoadmap} from '../../store/actions/authActions'
+import {getUserInfo, addUserInfo, getCV, getRoadmap, updateUserInfo} from '../../store/actions/authActions'
 import {getDegrees, getUnivers,getJobArea, getTechnos } from '../../store/actions/mainActions'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom';
@@ -164,6 +164,7 @@ function Profile(props) {
             <img className='cicon' src='images/l.png'/>
             <p className='citem'>{item.linkedin_link || 'linkedin'}</p>
            </div>
+           <button  className='buttonZ' type='submit'><Link className='lix'  to={{pathname:"/edit", hunter:{item}}}> Редактировать</Link></button>
       </div>
     </div>
     </div>
@@ -303,7 +304,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-getUserInfo, addUserInfo, getDegrees, getUnivers, getTechnos, getJobArea, getCV, getRoadmap
+getUserInfo, addUserInfo, getDegrees, getUnivers, getTechnos, getJobArea, getCV, getRoadmap, updateUserInfo
 }
 
 export default connect(
