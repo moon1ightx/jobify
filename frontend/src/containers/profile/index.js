@@ -3,7 +3,7 @@ import {  Link } from "react-router-dom";
 import Header from '../../components/header'
 import Footer  from '../../components/footer'
 import './profile.css'
-import {getUserInfo, addUserInfo, getCV} from '../../store/actions/authActions'
+import {getUserInfo, addUserInfo, getCV, getRoadmap} from '../../store/actions/authActions'
 import {getDegrees, getUnivers,getJobArea, getTechnos } from '../../store/actions/mainActions'
 import { connect } from 'react-redux'
 import { useHistory } from 'react-router-dom';
@@ -19,6 +19,7 @@ const onMount = props => () => {
  props.getUnivers()
  props.getJobArea()
  props.getTechnos()
+ props.getRoadmap()
 }
 
 function getBase64(img, callback) {
@@ -88,7 +89,7 @@ function Profile(props) {
   };
   const {isAuth} = props.authReducer
   useEffect(onMount(props), [])
-  const {user_info} = props.authReducer
+  const {user_info, roadmap} = props.authReducer
 
   const useri = user_info.map(item => (
     <div className='row'>
@@ -118,6 +119,22 @@ function Profile(props) {
             {item.techno.map(i => ( <p className='techno'>{i.title} </p>))}
            </div>
            <form onSubmit={handleLog}><label><b className='redd'>*</b>При нажатии на эту кнопку мы отправим Вам на почту СV</label><button  className='buttonV' type='submit'>Получить CV </button><br /></form>
+          <br /><hr /><br />
+           {roadmap.map(i => ( 
+             <div>
+           <h5 >{i.title} </h5>
+           <div className='row'>
+           {i.plan.map(iX => (
+              <div className='boxs'> 
+              <p className='des'>{iX.title} </p>
+              <p >Полезные источноки:</p><p  className='des'>{iX.useful_links} </p>
+              <p  className='des'>{iX.tutorials} </p>
+              {iX.techno.map(iz => ( <p className='techno'>{iz.title} </p>))}
+              </div>
+              ))}
+           </div>
+           </div>
+           ))}
     </div>
 
     <div className='col-4 dark'>
@@ -286,7 +303,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-getUserInfo, addUserInfo, getDegrees, getUnivers, getTechnos, getJobArea, getCV
+getUserInfo, addUserInfo, getDegrees, getUnivers, getTechnos, getJobArea, getCV, getRoadmap
 }
 
 export default connect(

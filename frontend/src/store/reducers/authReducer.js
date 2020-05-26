@@ -1,5 +1,5 @@
 
-import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, GET_USER_INFO, ADD_USER_INFO, GET_CV} from '../actions/types'
+import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, GET_USER_INFO, ADD_USER_INFO, GET_CV, GET_ROADMAP} from '../actions/types'
 import jwt_decode from 'jwt-decode'
 import axios from 'axios'
 
@@ -7,7 +7,8 @@ const initialState = {
   isAuth: false,
   currentUserId: null,
   signUpSuccess: false,
-  user_info: []
+  user_info: [], 
+  roadmap: []
 }
 
 export default function (state=initialState, action){
@@ -45,6 +46,11 @@ export default function (state=initialState, action){
             return {
                 ...state,
                 user_info: action.payload
+            }
+        case GET_ROADMAP:
+            return {
+                ...state,
+                roadmap: action.payload
             }
         case GET_CV:
             return {

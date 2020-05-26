@@ -1,5 +1,5 @@
 
-import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, ERROR_HANDLE, GET_USER_INFO, ADD_USER_INFO,GET_CV} from './types'
+import {USER_LOGIN, USER_SIGNUP, USER_LOGOUT, ERROR_HANDLE, GET_USER_INFO, ADD_USER_INFO,GET_CV, GET_ROADMAP} from './types'
 import axios from 'axios'
 
 
@@ -79,7 +79,20 @@ export const logIn = (user) => dispatch =>{
      })
      .catch(err => console.log(err))
  };
- 
+ export const getRoadmap = () => dispatch =>{
+    axios.get('/api/roadmap', { headers: {
+        "Content-Type": undefined
+    }
+})
+     .then(res => {
+         console.log("Response: ", res, res.data)
+         dispatch({
+             type: GET_ROADMAP,
+             payload: res.data
+         })
+     })
+     .catch(err => console.log(err))
+ };
  export const addUserInfo = data => dispatch =>{
     const fm = new FormData()
     Object.keys(data).map(key => {

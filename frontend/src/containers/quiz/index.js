@@ -21,7 +21,7 @@ function Quiz(props) {
     if(isAuth){
     e.preventDefault();
     props.addRoadmap(formData)
-    history.push("/");
+    history.push("/profile");
     }else{
       history.push("/auth");
     }
