@@ -11,6 +11,7 @@ https://www.getpostman.com/collections/e5d2fcf6ec7ba445dfe3
 Django Quick Install Guide:
 https://docs.djangoproject.com/en/3.0/intro/install/
 
-Run the following command to run server:
-python3 manage.py runserver
+Run the following commands to run servers:
+cd backend -> python3 manage.py runserver
+cd frontend -> npm start
 
